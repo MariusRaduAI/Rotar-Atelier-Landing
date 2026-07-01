@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Arhivă Logo-uri — Rotar Atelier</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body class="admin-body">
+
+<div class="grain"></div>
+
+<!-- ================= LOGIN ================= -->
+<section class="admin-login" id="loginView">
+  <div class="login-card">
+    <svg class="brand-svg" viewBox="0 0 64 64" aria-hidden="true">
+      <text x="14" y="46" class="rt-r">R</text>
+      <text x="30" y="52" class="rt-t">T</text>
+    </svg>
+    <p class="kicker kicker-light" style="text-align:center;">Zonă privată</p>
+    <h1 class="login-title">Arhivă Logo-uri</h1>
+    <p class="login-sub">Autentifică-te pentru a încărca și administra materialele de brand.</p>
+
+    <form id="loginForm" class="login-form">
+      <label>
+        <span>Email</span>
+        <input type="email" name="email" required autocomplete="username">
+      </label>
+      <label>
+        <span>Parolă</span>
+        <input type="password" name="password" required autocomplete="current-password">
+      </label>
+      <button type="submit" class="btn btn-gold btn-full">Autentificare</button>
+      <p class="form-note" id="loginError"></p>
+    </form>
+
+    <p class="config-warning" id="configWarning" hidden>
+      Conexiunea la Supabase nu e configurată încă — completează
+      <code>admin/config.js</code> cu URL-ul și cheia proiectului.
+    </p>
+  </div>
+</section>
+
+<!-- ================= DASHBOARD ================= -->
+<section class="admin-dashboard" id="dashboardView" hidden>
+  <header class="admin-header">
+    <div class="container admin-header-inner">
+      <a href="/index.html" class="brand-mark">
+        <svg class="brand-svg" viewBox="0 0 64 64" aria-hidden="true">
+          <text x="14" y="46" class="rt-r">R</text>
+          <text x="30" y="52" class="rt-t">T</text>
+        </svg>
+        <span class="brand-word">Rotar Atelier</span>
+      </a>
+      <div class="admin-header-actions">
+        <span class="admin-user" id="adminUserEmail"></span>
+        <button class="btn btn-ghost" id="logoutBtn">Ieșire</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="container admin-content">
+    <p class="kicker">Zonă privată</p>
+    <h1 class="section-title">Arhivă Logo-uri</h1>
+    <p class="section-lead">Încarcă și păstrează aici toate variantele de logo, monograme și materiale de brand Rotar Atelier.</p>
+
+    <div class="dropzone" id="dropzone">
+      <svg viewBox="0 0 48 48" class="dropzone-icon"><path d="M24 32V10M24 10l-8 8M24 10l8 8" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10 32v4a2 2 0 002 2h24a2 2 0 002-2v-4" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
+      <p><strong>Trage fișierele aici</strong> sau apasă pentru a le selecta</p>
+      <p class="dropzone-hint">SVG, PNG, JPG, PDF, AI — orice format de logo</p>
+      <input type="file" id="fileInput" multiple hidden>
+    </div>
+
+    <div class="upload-progress" id="uploadProgress" hidden></div>
+
+    <div class="archive-head">
+      <h2>Fișiere arhivate</h2>
+      <span class="archive-count" id="archiveCount"></span>
+    </div>
+
+    <div class="logo-grid" id="logoGrid"></div>
+    <p class="empty-state" id="emptyState" hidden>Nu ai încărcat încă niciun logo. Trage un fișier mai sus ca să începi arhiva.</p>
+  </div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="/admin/config.js"></script>
+<script src="/admin/admin.js"></script>
+</body>
+</html>
