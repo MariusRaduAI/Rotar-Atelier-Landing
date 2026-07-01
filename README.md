@@ -87,7 +87,8 @@ Defined as CSS custom properties in `styles.css` (`:root`).
 
 ## Status / open items
 
+- [x] Real product photography (`assets/hero-craft.jpg`, `craft-*.jpg`) and real logo lockups (`assets/logo-*.png`, extracted from `rotar logo.pdf`)
+- [x] Real phone (0720 786 883) and address (Strada Popa Savu 56, parter, București) wired into header, hero, contact section, footer, and mobile sticky CTA
 - [ ] Replace placeholder testimonials with real client quotes
-- [ ] Add real product photography (currently no images on the landing page)
 - [ ] Replace placeholder contact email (`contact@rotaratelier.ro`) in `script.js`
 - [ ] Connect a persistent form backend instead of `mailto:`
