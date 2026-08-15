@@ -21,17 +21,21 @@ mainNav.querySelectorAll('a').forEach(link => {
   link.addEventListener('click', () => mainNav.classList.remove('open'));
 });
 
-// Scroll reveal
-const revealEls = document.querySelectorAll('.reveal');
-const io = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in-view');
-      io.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
-revealEls.forEach(el => io.observe(el));
+// Craft image reveal — the one deliberate scroll-triggered moment.
+// Base CSS already renders the image fully visible; this class only
+// adds a one-time wipe-in flourish when it enters view.
+const craftMedia = document.querySelector('.craft-media');
+if (craftMedia) {
+  const mediaIO = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        mediaIO.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  mediaIO.observe(craftMedia);
+}
 
 // Contact form — builds a mailto with the request details
 const form = document.getElementById('offerForm');
@@ -62,5 +66,5 @@ ${mesaj}`
   );
 
   window.location.href = `mailto:contact@rotaratelier.ro?subject=${subject}&body=${body}`;
-  note.textContent = 'Se deschide emailul cu solicitarea ta — trimite-o pentru a o confirma.';
+  note.textContent = 'Se deschide emailul cu solicitarea ta. Trimite-o pentru a o confirma.';
 });
