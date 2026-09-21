@@ -64,12 +64,21 @@ to a URL that accepts JSON (Formspree, a serverless function, etc.).
 
 ## Photography
 
-Four real scenes from the kitchen, cropped into different frames:
-`hero.jpg` (assembly), `chef-piping.jpg` and `gallery-rolls.jpg` (cinnamon
-rolls), `gallery-baker.jpg` and `gallery-focaccia.jpg` (focaccia), and
-`gallery-sandwich.jpg` (detail of the hero scene). More photography,
-especially edible gifts and a finished event table, is the biggest upgrade
-still available.
+Event food (the strongest material): `hero.jpg` (the shared table, with the gold
+cutlery), `cater.jpg`, `mezze.jpg` (annotated), `skewers-band.jpg` /
+`skewers-tall.jpg` (full-bleed band, desktop / mobile), `tasting.jpg`
+(annotated), `tasting-angle.jpg`. Kitchen shots: `chef-piping.jpg`,
+`gallery-baker.jpg`, `gallery-focaccia.jpg`, `gallery-rolls.jpg`,
+`gallery-sandwich.jpg`.
+
+**Annotated photos.** In `index.html` a `.pin` sits at `left/top` percentages
+over an image whose container keeps the image's own aspect ratio, so the
+numbers stay on the food at every size. Each pin matches a numbered line in the
+`.legend` next to it; hovering a legend line lifts its pin. The dish names are
+`g1.l*` / `g3.l*` in `i18n.js`, written from what is visible in the photos, so
+check them with the kitchen.
+
+Still missing: edible gifts and a finished event table, in the same style.
 
 ## Deployment
 
@@ -82,4 +91,4 @@ Pushing to `main` deploys automatically when the repo is connected to Vercel.
 - [ ] Decide where leads should land: a real inbox, or a Supabase table shown in `/admin`
 - [ ] Add `og:image` once the production domain is known (`assets/og.jpg` is ready)
 - [ ] Menu tiers section (three set menus plus a build-your-own fourth), planned
-- [ ] Confirm the inferred copy: "Calm service" commitments, "We arrive" step, six category descriptions
+- [ ] Confirm the inferred copy: "Calm service" commitments, "We arrive" step, six category descriptions, and the dish names under the annotated photos

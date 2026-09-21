@@ -28,19 +28,6 @@
   if (year) year.textContent = new Date().getFullYear();
 
   /* ------------------------------------------------------------------
-   * Header turns solid once the page has scrolled past the top
-   * ------------------------------------------------------------------ */
-  var header = $('#siteHeader');
-  var sentinel = $('#top-sentinel');
-  if (header && sentinel && 'IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      header.classList.toggle('is-solid', !entries[0].isIntersecting);
-    }).observe(sentinel);
-  } else if (header) {
-    header.classList.add('is-solid');
-  }
-
-  /* ------------------------------------------------------------------
    * Mobile navigation
    * ------------------------------------------------------------------ */
   var toggle = $('#navToggle');

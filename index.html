@@ -22,7 +22,6 @@
 <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 
 <!-- ============ HEADER ============ -->
-<div id="top-sentinel" aria-hidden="true"></div>
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
     <a href="#top" class="brand" aria-label="Rotar Atelier">
@@ -72,10 +71,7 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
-  <div class="hero-media">
-    <img src="/assets/hero.jpg" width="2400" height="1402" alt="A cook assembling focaccia with ham, rocket and cherry tomatoes" data-i18n-attr="alt:alt.hero" fetchpriority="high">
-  </div>
-  <div class="container hero-inner">
+  <div class="hero-copy">
     <h1 data-i18n-html="hero.h1">Your private chef,<br><em>cooking where you are.</em></h1>
     <p class="hero-sub" data-i18n="hero.sub">Catering for companies and private events in Bucharest. Home-made, never frozen, cooked live at your venue. Choose a set menu or ask for anything else.</p>
     <div class="hero-actions">
@@ -86,6 +82,9 @@
       </a>
     </div>
   </div>
+  <figure class="hero-photo">
+    <img src="/assets/hero.jpg" width="1500" height="2000" alt="Overhead view of a table: roasted tomatoes, hummus with pomegranate, marinated olives and focaccia, with gold cutlery" data-i18n-attr="alt:alt.hero" fetchpriority="high">
+  </figure>
 </section>
 
 <!-- ============ WHAT WE CATER ============ -->
@@ -94,6 +93,9 @@
     <div class="cater-head">
       <h2 class="display" data-i18n="cater.title">What we cater</h2>
       <p class="lead" data-i18n="cater.lead">Every job starts in the same kitchen. What changes is the room, the headcount and the clock.</p>
+      <figure class="cater-figure">
+        <img src="/assets/cater.jpg" width="1000" height="1333" alt="Roasted tomatoes on a white plate and marinated olives in a steel pan, with gold spoons" data-i18n-attr="alt:alt.cater" loading="lazy" decoding="async">
+      </figure>
     </div>
 
     <div class="cater-list">
@@ -224,29 +226,98 @@
 <!-- ============ GALLERY + SOCIAL PROOF ============ -->
 <section class="section on-dark gallery" id="gallery">
   <div class="container">
-    <h2 class="display" data-i18n="gallery.title">See for yourself</h2>
+    <div class="gallery-head">
+      <h2 class="display" data-i18n="gallery.title">See for yourself</h2>
+      <p class="lead" data-i18n="gallery.lead">A few things we make.</p>
+    </div>
 
-    <div class="mosaic">
-      <figure class="tile tile-baker">
-        <img src="/assets/gallery-baker.jpg" width="1100" height="1530" alt="A baker holding a stack of freshly cut focaccia" data-i18n-attr="alt:alt.baker" loading="lazy" decoding="async">
+    <!-- A: the shared table (annotated) -->
+    <article class="chapter chapter-a">
+      <div class="chapter-text">
+        <h3 data-i18n="g1.t">The shared table</h3>
+        <p data-i18n="g1.p">Roasted tomatoes and peppers, hummus, marinated olives and focaccia. Colour, olive oil and herbs, made to be shared.</p>
+        <ol class="legend">
+          <li data-pin="1"><span class="n">1</span><span data-i18n="g1.l1">Roasted tomatoes, garlic and rosemary</span></li>
+          <li data-pin="2"><span class="n">2</span><span data-i18n="g1.l2">Marinated olives with mint and lemon</span></li>
+          <li data-pin="3"><span class="n">3</span><span data-i18n="g1.l3">Hummus with pomegranate and pine nuts</span></li>
+        </ol>
+        <a href="#start" class="link-arrow"><span data-i18n="g.cta">Request a quote</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+      </div>
+      <figure class="annot annot-a">
+        <img src="/assets/mezze.jpg" width="1000" height="1778" alt="Overhead view of roasted tomatoes, marinated olives and a bowl of hummus with pomegranate" data-i18n-attr="alt:alt.g1" loading="lazy" decoding="async">
+        <span class="pin" data-pin="1" style="left:29%;top:27%" aria-hidden="true">1</span>
+        <span class="pin" data-pin="2" style="left:83%;top:15%" aria-hidden="true">2</span>
+        <span class="pin" data-pin="3" style="left:72%;top:69%" aria-hidden="true">3</span>
       </figure>
-      <figure class="tile tile-sandwich">
-        <img src="/assets/gallery-sandwich.jpg" width="1400" height="1050" alt="Open sandwiches with ham, rocket and cherry tomatoes on toasted bread" data-i18n-attr="alt:alt.sandwich" loading="lazy" decoding="async">
+    </article>
+  </div>
+
+  <!-- B: skewers (full bleed) -->
+  <div class="band">
+    <picture>
+      <source media="(max-width: 720px)" srcset="/assets/skewers-tall.jpg">
+      <img src="/assets/skewers-band.jpg" width="1500" height="780" alt="A steel tray of rolled ham skewers with mint, pomegranate seeds and lemon zest" data-i18n-attr="alt:alt.g2" loading="lazy" decoding="async">
+    </picture>
+    <div class="container band-inner">
+      <div class="band-card">
+        <h3 data-i18n="g2.t">Rolled ham skewers</h3>
+        <p data-i18n="g2.p">Finger food, finished with mint, pomegranate and lemon zest.</p>
+        <a href="#start" class="link-arrow"><span data-i18n="g.cta">Request a quote</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <!-- C: the tasting plate (annotated + angled) -->
+    <article class="chapter chapter-c">
+      <figure class="annot annot-c">
+        <img src="/assets/tasting.jpg" width="1200" height="1296" alt="Overhead view of a tasting plate with two soups in glasses, a savoury tart and a beef tartare" data-i18n-attr="alt:alt.g3a" loading="lazy" decoding="async">
+        <span class="pin" data-pin="1" style="left:50%;top:19%" aria-hidden="true">1</span>
+        <span class="pin" data-pin="2" style="left:27%;top:41%" aria-hidden="true">2</span>
+        <span class="pin" data-pin="3" style="left:66%;top:49%" aria-hidden="true">3</span>
+        <span class="pin" data-pin="4" style="left:42%;top:67%" aria-hidden="true">4</span>
       </figure>
-      <a class="tile tile-gift" href="#start" data-occasion="cakes-gifts">
-        <h3 data-i18n="gifts.t">Edible gifts for your team</h3>
-        <p data-i18n="gifts.p">Gifts for teams and clients, made by hand and sized to your list.</p>
-        <span class="link-arrow">
-          <span data-i18n="gifts.cta">Ask about gifts</span>
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-        </span>
-      </a>
-      <figure class="tile tile-focaccia">
-        <img src="/assets/gallery-focaccia.jpg" width="1400" height="933" alt="Freshly cut focaccia stacked on a board" data-i18n-attr="alt:alt.focaccia" loading="lazy" decoding="async">
+      <div class="chapter-text">
+        <h3 data-i18n="g3.t">The tasting plate</h3>
+        <p data-i18n="g3.p">Two small soups, a savoury tart and a tartare, on one plate.</p>
+        <ol class="legend">
+          <li data-pin="1"><span class="n">1</span><span data-i18n="g3.l1">Tomato soup</span></li>
+          <li data-pin="2"><span class="n">2</span><span data-i18n="g3.l2">Savoury tart with cream and chive</span></li>
+          <li data-pin="3"><span class="n">3</span><span data-i18n="g3.l3">Sweetcorn soup with charred corn</span></li>
+          <li data-pin="4"><span class="n">4</span><span data-i18n="g3.l4">Beef tartare with pickle</span></li>
+        </ol>
+        <a href="#start" class="link-arrow"><span data-i18n="g.cta">Request a quote</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
+      </div>
+      <figure class="chapter-second">
+        <img src="/assets/tasting-angle.jpg" width="1100" height="1467" alt="The same tasting plate in low sun, with more plates lined up behind" data-i18n-attr="alt:alt.g3b" loading="lazy" decoding="async">
       </figure>
-      <figure class="tile tile-rolls">
-        <img src="/assets/gallery-rolls.jpg" width="1200" height="959" alt="A tray of cinnamon rolls topped with cream" data-i18n-attr="alt:alt.rolls" loading="lazy" decoding="async">
-      </figure>
+    </article>
+
+    <!-- From the oven -->
+    <div class="oven">
+      <h3 class="oven-title" data-i18n="gallery.oven">From the oven</h3>
+      <div class="mosaic">
+        <figure class="tile tile-baker">
+          <img src="/assets/gallery-baker.jpg" width="1100" height="1530" alt="A baker holding a stack of freshly cut focaccia" data-i18n-attr="alt:alt.baker" loading="lazy" decoding="async">
+        </figure>
+        <figure class="tile tile-sandwich">
+          <img src="/assets/gallery-sandwich.jpg" width="1400" height="1050" alt="Open sandwiches with ham, rocket and cherry tomatoes on toasted bread" data-i18n-attr="alt:alt.sandwich" loading="lazy" decoding="async">
+        </figure>
+        <a class="tile tile-gift" href="#start" data-occasion="cakes-gifts">
+          <h3 data-i18n="gifts.t">Edible gifts for your team</h3>
+          <p data-i18n="gifts.p">Gifts for teams and clients, made by hand and sized to your list.</p>
+          <span class="link-arrow">
+            <span data-i18n="gifts.cta">Ask about gifts</span>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+          </span>
+        </a>
+        <figure class="tile tile-focaccia">
+          <img src="/assets/gallery-focaccia.jpg" width="1400" height="933" alt="Freshly cut focaccia stacked on a board" data-i18n-attr="alt:alt.focaccia" loading="lazy" decoding="async">
+        </figure>
+        <figure class="tile tile-rolls">
+          <img src="/assets/gallery-rolls.jpg" width="1200" height="959" alt="A tray of cinnamon rolls topped with cream" data-i18n-attr="alt:alt.rolls" loading="lazy" decoding="async">
+        </figure>
+      </div>
     </div>
 
     <!-- Filled by script.js from the TESTIMONIALS list. Stays hidden until it has real quotes. -->
