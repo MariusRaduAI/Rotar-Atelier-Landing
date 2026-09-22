@@ -47,6 +47,15 @@
         ],
         "createdAt": "2026-09-22T09:00:48.209Z",
         "reason": "Deliberate, user-requested interaction: the header collapses to just the RT mark on scroll (one-time, on crossing the hero/content boundary — not a frequent or hover-driven transition). A transform-only version would either squash the wordmark's letterforms (scaleX) or leave a layout gap when the word fades but its box stays reserved. Confirmed smooth in-browser at 375/1440px."
+      },
+      {
+        "rule": "tight-leading",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-22T09:43:58.891Z",
+        "reason": "User confirmed: after three separate checks (this session, two prior) scanning computed line-height/font-size ratios across all elements (including form controls) at desktop and mobile, in both EN and RO, nothing in the rendered DOM matches 1.22x. Finding carries no line number or snippet location. Treated as a static-analysis false positive rather than guess-fixed."
       }
     ]
   }
