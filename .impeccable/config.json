@@ -29,6 +29,24 @@
         ],
         "createdAt": "2026-09-20T04:37:51.867Z",
         "reason": "Cream is the client's brand-board colour (supplied by the user), not a user-confirmed exception. Used on alternating sections only; black and gold carry the rest."
+      },
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "index.html"
+        ],
+        "createdAt": "2026-09-22T08:59:59.869Z",
+        "reason": "Deliberate, user-requested interaction: the header collapses to just the RT mark on scroll (one-time, on crossing the hero/content boundary — not a frequent or hover-driven transition). A transform-only version would either squash the wordmark's letterforms (scaleX) or leave a layout gap when the word fades but its box stays reserved. Confirmed smooth in-browser at 375/1440px."
+      },
+      {
+        "rule": "layout-transition",
+        "value": "*",
+        "files": [
+          "styles.css"
+        ],
+        "createdAt": "2026-09-22T09:00:48.209Z",
+        "reason": "Deliberate, user-requested interaction: the header collapses to just the RT mark on scroll (one-time, on crossing the hero/content boundary — not a frequent or hover-driven transition). A transform-only version would either squash the wordmark's letterforms (scaleX) or leave a layout gap when the word fades but its box stays reserved. Confirmed smooth in-browser at 375/1440px."
       }
     ]
   }

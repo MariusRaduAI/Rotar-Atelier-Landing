@@ -22,11 +22,12 @@
 <a class="skip" href="#main" data-i18n="skip">Skip to content</a>
 
 <!-- ============ HEADER ============ -->
+<div id="top-sentinel" aria-hidden="true"></div>
 <header class="site-header" id="siteHeader">
   <div class="container header-inner">
     <a href="#top" class="brand" aria-label="Rotar Atelier">
-      <img src="/assets/logo-mark-cream.png" alt="" width="30" height="30">
-      <span>Rotar Atelier</span>
+      <img src="/assets/logo-mark-cream.png" alt="" width="40" height="40" class="brand-mark">
+      <span class="brand-word">Rotar Atelier</span>
     </a>
 
     <nav class="nav" id="mainNav" aria-label="Main">
@@ -71,10 +72,16 @@
 
 <!-- ============ HERO ============ -->
 <section class="hero" id="top">
-  <div class="hero-copy">
-    <h1 data-i18n-html="hero.h1">Your private chef,<br><em>cooking where you are.</em></h1>
-    <p class="hero-sub" data-i18n="hero.sub">Catering for companies and private events in Bucharest. Home-made, never frozen, cooked live at your venue. Choose a set menu or ask for anything else.</p>
-    <div class="hero-actions">
+  <div class="hero-media">
+    <img src="/assets/hero.jpg" width="1500" height="2000" alt="Overhead view of a table: roasted tomatoes, hummus with pomegranate, marinated olives and focaccia, with gold cutlery" data-i18n-attr="alt:alt.hero" fetchpriority="high">
+  </div>
+
+  <img class="hero-seal" src="/assets/logo-full-cream.png" alt="" width="640" height="640" aria-hidden="true">
+
+  <div class="container hero-inner">
+    <h1 class="hero-line" data-i18n-html="hero.h1">Your private chef,<br><em>cooking where you are.</em></h1>
+    <p class="hero-sub hero-line" data-i18n="hero.sub">Catering for companies and private events in Bucharest. Home-made, never frozen, cooked live at your venue. Choose a set menu or ask for anything else.</p>
+    <div class="hero-actions hero-line">
       <a href="#start" class="btn btn-gold btn-lg" data-i18n="hero.cta">Request a quote</a>
       <a href="tel:+40720786883" class="btn btn-line btn-lg" data-i18n-attr="aria-label:hero.callLabel" aria-label="Call 0720 786 883">
         <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.9 21 3 13.1 3 3c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1.1z" fill="none" stroke="currentColor" stroke-width="1.4"/></svg>
@@ -82,9 +89,10 @@
       </a>
     </div>
   </div>
-  <figure class="hero-photo">
-    <img src="/assets/hero.jpg" width="1500" height="2000" alt="Overhead view of a table: roasted tomatoes, hummus with pomegranate, marinated olives and focaccia, with gold cutlery" data-i18n-attr="alt:alt.hero" fetchpriority="high">
-  </figure>
+
+  <a class="hero-scroll" href="#cater" aria-hidden="true" tabindex="-1">
+    <span></span>
+  </a>
 </section>
 
 <!-- ============ WHAT WE CATER ============ -->
@@ -223,108 +231,74 @@
   </div>
 </section>
 
-<!-- ============ GALLERY + SOCIAL PROOF ============ -->
+<!-- ============ GALLERY ============ -->
 <section class="section on-dark gallery" id="gallery">
-  <div class="container">
-    <div class="gallery-head">
-      <h2 class="display" data-i18n="gallery.title">See for yourself</h2>
-      <p class="lead" data-i18n="gallery.lead">A few things we make.</p>
-    </div>
+  <div class="container gallery-head">
+    <h2 class="display" data-i18n="gallery.title">On the table</h2>
+    <p class="lead" data-i18n="gallery.lead">Swipe through a few plates.</p>
+  </div>
 
-    <!-- A: the shared table (annotated) -->
-    <article class="chapter chapter-a">
-      <div class="chapter-text">
-        <h3 data-i18n="g1.t">The shared table</h3>
-        <p data-i18n="g1.p">Roasted tomatoes and peppers, hummus, marinated olives and focaccia. Colour, olive oil and herbs, made to be shared.</p>
-        <ol class="legend">
-          <li data-pin="1"><span class="n">1</span><span data-i18n="g1.l1">Roasted tomatoes, garlic and rosemary</span></li>
-          <li data-pin="2"><span class="n">2</span><span data-i18n="g1.l2">Marinated olives with mint and lemon</span></li>
-          <li data-pin="3"><span class="n">3</span><span data-i18n="g1.l3">Hummus with pomegranate and pine nuts</span></li>
-        </ol>
-        <a href="#start" class="link-arrow"><span data-i18n="g.cta">Request a quote</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
-      </div>
-      <figure class="annot annot-a">
+  <div class="reel" id="reel" tabindex="0" role="region" data-i18n-attr="aria-label:gallery.title" aria-label="On the table">
+    <div class="reel-track">
+      <figure class="slide" data-slide="1">
         <img src="/assets/mezze.jpg" width="1000" height="1778" alt="Overhead view of roasted tomatoes, marinated olives and a bowl of hummus with pomegranate" data-i18n-attr="alt:alt.g1" loading="lazy" decoding="async">
-        <span class="pin" data-pin="1" style="left:29%;top:27%" aria-hidden="true">1</span>
-        <span class="pin" data-pin="2" style="left:83%;top:15%" aria-hidden="true">2</span>
-        <span class="pin" data-pin="3" style="left:72%;top:69%" aria-hidden="true">3</span>
+        <figcaption><h3 data-i18n="g.s1.t">The shared table</h3><p data-i18n="g.s1.p">Roasted tomatoes, hummus, olives and focaccia.</p></figcaption>
       </figure>
-    </article>
-  </div>
-
-  <!-- B: skewers (full bleed) -->
-  <div class="band">
-    <picture>
-      <source media="(max-width: 720px)" srcset="/assets/skewers-tall.jpg">
-      <img src="/assets/skewers-band.jpg" width="1500" height="780" alt="A steel tray of rolled ham skewers with mint, pomegranate seeds and lemon zest" data-i18n-attr="alt:alt.g2" loading="lazy" decoding="async">
-    </picture>
-    <div class="container band-inner">
-      <div class="band-card">
-        <h3 data-i18n="g2.t">Rolled ham skewers</h3>
-        <p data-i18n="g2.p">Finger food, finished with mint, pomegranate and lemon zest.</p>
-        <a href="#start" class="link-arrow"><span data-i18n="g.cta">Request a quote</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
-      </div>
-    </div>
-  </div>
-
-  <div class="container">
-    <!-- C: the tasting plate (annotated + angled) -->
-    <article class="chapter chapter-c">
-      <figure class="annot annot-c">
+      <figure class="slide" data-slide="2">
+        <img src="/assets/skewers-tall.jpg" width="1500" height="2000" alt="A steel tray of rolled ham skewers with mint, pomegranate seeds and lemon zest" data-i18n-attr="alt:alt.g2" loading="lazy" decoding="async">
+        <figcaption><h3 data-i18n="g.s2.t">Rolled ham skewers</h3><p data-i18n="g.s2.p">Mint, pomegranate and lemon zest.</p></figcaption>
+      </figure>
+      <figure class="slide" data-slide="3">
         <img src="/assets/tasting.jpg" width="1200" height="1296" alt="Overhead view of a tasting plate with two soups in glasses, a savoury tart and a beef tartare" data-i18n-attr="alt:alt.g3a" loading="lazy" decoding="async">
-        <span class="pin" data-pin="1" style="left:50%;top:19%" aria-hidden="true">1</span>
-        <span class="pin" data-pin="2" style="left:27%;top:41%" aria-hidden="true">2</span>
-        <span class="pin" data-pin="3" style="left:66%;top:49%" aria-hidden="true">3</span>
-        <span class="pin" data-pin="4" style="left:42%;top:67%" aria-hidden="true">4</span>
+        <figcaption><h3 data-i18n="g.s3.t">The tasting plate</h3><p data-i18n="g.s3.p">Two soups, a savoury tart, a tartare.</p></figcaption>
       </figure>
-      <div class="chapter-text">
-        <h3 data-i18n="g3.t">The tasting plate</h3>
-        <p data-i18n="g3.p">Two small soups, a savoury tart and a tartare, on one plate.</p>
-        <ol class="legend">
-          <li data-pin="1"><span class="n">1</span><span data-i18n="g3.l1">Tomato soup</span></li>
-          <li data-pin="2"><span class="n">2</span><span data-i18n="g3.l2">Savoury tart with cream and chive</span></li>
-          <li data-pin="3"><span class="n">3</span><span data-i18n="g3.l3">Sweetcorn soup with charred corn</span></li>
-          <li data-pin="4"><span class="n">4</span><span data-i18n="g3.l4">Beef tartare with pickle</span></li>
-        </ol>
-        <a href="#start" class="link-arrow"><span data-i18n="g.cta">Request a quote</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></a>
-      </div>
-      <figure class="chapter-second">
+      <figure class="slide" data-slide="4">
         <img src="/assets/tasting-angle.jpg" width="1100" height="1467" alt="The same tasting plate in low sun, with more plates lined up behind" data-i18n-attr="alt:alt.g3b" loading="lazy" decoding="async">
+        <figcaption><h3 data-i18n="g.s4.t">Ready to serve</h3><p data-i18n="g.s4.p">The same plate, a different table.</p></figcaption>
       </figure>
-    </article>
-
-    <!-- From the oven -->
-    <div class="oven">
-      <h3 class="oven-title" data-i18n="gallery.oven">From the oven</h3>
-      <div class="mosaic">
-        <figure class="tile tile-baker">
-          <img src="/assets/gallery-baker.jpg" width="1100" height="1530" alt="A baker holding a stack of freshly cut focaccia" data-i18n-attr="alt:alt.baker" loading="lazy" decoding="async">
-        </figure>
-        <figure class="tile tile-sandwich">
-          <img src="/assets/gallery-sandwich.jpg" width="1400" height="1050" alt="Open sandwiches with ham, rocket and cherry tomatoes on toasted bread" data-i18n-attr="alt:alt.sandwich" loading="lazy" decoding="async">
-        </figure>
-        <a class="tile tile-gift" href="#start" data-occasion="cakes-gifts">
+      <figure class="slide" data-slide="5">
+        <img src="/assets/gallery-baker.jpg" width="1100" height="1530" alt="A baker holding a stack of freshly cut focaccia" data-i18n-attr="alt:alt.baker" loading="lazy" decoding="async">
+        <figcaption><h3 data-i18n="g.s5.t">Baked that morning</h3><p data-i18n="g.s5.p">Fresh focaccia, every time.</p></figcaption>
+      </figure>
+      <figure class="slide" data-slide="6">
+        <img src="/assets/gallery-sandwich.jpg" width="1400" height="1050" alt="Open sandwiches with ham, rocket and cherry tomatoes on toasted bread" data-i18n-attr="alt:alt.sandwich" loading="lazy" decoding="async">
+        <figcaption><h3 data-i18n="g.s6.t">Assembled to order</h3><p data-i18n="g.s6.p">Ham, rocket, cherry tomatoes.</p></figcaption>
+      </figure>
+      <figure class="slide" data-slide="7">
+        <img src="/assets/gallery-focaccia.jpg" width="1400" height="933" alt="Freshly cut focaccia stacked on a board" data-i18n-attr="alt:alt.focaccia" loading="lazy" decoding="async">
+        <figcaption><h3 data-i18n="g.s7.t">The crumb</h3><p data-i18n="g.s7.p">Slow fermentation, real air.</p></figcaption>
+      </figure>
+      <figure class="slide" data-slide="8">
+        <img src="/assets/gallery-rolls.jpg" width="1200" height="959" alt="A tray of cinnamon rolls topped with cream" data-i18n-attr="alt:alt.rolls" loading="lazy" decoding="async">
+        <figcaption><h3 data-i18n="g.s8.t">Something sweet, too</h3><p data-i18n="g.s8.p">Cinnamon rolls, fresh cream.</p></figcaption>
+      </figure>
+      <a class="slide slide-cta" data-slide="9" href="#start" data-occasion="cakes-gifts">
+        <img src="/assets/gallery-focaccia.jpg" width="1400" height="933" alt="" aria-hidden="true">
+        <div class="slide-cta-body">
           <h3 data-i18n="gifts.t">Edible gifts for your team</h3>
           <p data-i18n="gifts.p">Gifts for teams and clients, made by hand and sized to your list.</p>
-          <span class="link-arrow">
-            <span data-i18n="gifts.cta">Ask about gifts</span>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
-          </span>
-        </a>
-        <figure class="tile tile-focaccia">
-          <img src="/assets/gallery-focaccia.jpg" width="1400" height="933" alt="Freshly cut focaccia stacked on a board" data-i18n-attr="alt:alt.focaccia" loading="lazy" decoding="async">
-        </figure>
-        <figure class="tile tile-rolls">
-          <img src="/assets/gallery-rolls.jpg" width="1200" height="959" alt="A tray of cinnamon rolls topped with cream" data-i18n-attr="alt:alt.rolls" loading="lazy" decoding="async">
-        </figure>
-      </div>
+          <span class="link-arrow"><span data-i18n="gifts.cta">Ask about gifts</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
+        </div>
+      </a>
     </div>
+  </div>
 
-    <!-- Filled by script.js from the TESTIMONIALS list. Stays hidden until it has real quotes. -->
-    <div class="proof" id="proof" hidden>
-      <h3 class="proof-title" data-i18n="proof.title">What clients say</h3>
-      <div class="proof-list" id="proofList"></div>
+  <div class="container reel-controls">
+    <div class="reel-dots" id="reelDots"></div>
+    <div class="reel-arrows">
+      <button type="button" class="reel-arrow" data-dir="-1" data-i18n-attr="aria-label:gallery.prev" aria-label="Previous photo">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      </button>
+      <button type="button" class="reel-arrow" data-dir="1" data-i18n-attr="aria-label:gallery.next" aria-label="Next photo">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>
+      </button>
     </div>
+  </div>
+
+  <!-- Filled by script.js from the TESTIMONIALS list. Stays hidden until it has real quotes. -->
+  <div class="container proof" id="proof" hidden>
+    <h3 class="proof-title" data-i18n="proof.title">What clients say</h3>
+    <div class="proof-list" id="proofList"></div>
   </div>
 </section>
 
@@ -448,6 +422,7 @@
   </div>
   <div class="container footer-base">
     <p>© <span id="year">2026</span> Rotar Atelier. <span data-i18n="footer.rights">All rights reserved.</span></p>
+    <p class="footer-holy"><span data-i18n="footer.holy">Bakery &amp; brunch, every day, at</span> <a href="https://holybakery.ro" target="_blank" rel="noopener">holybakery.ro</a></p>
     <p class="footer-mark">The Experience</p>
   </div>
 </footer>

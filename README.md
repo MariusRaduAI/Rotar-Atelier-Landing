@@ -64,21 +64,34 @@ to a URL that accepts JSON (Formspree, a serverless function, etc.).
 
 ## Photography
 
-Event food (the strongest material): `hero.jpg` (the shared table, with the gold
-cutlery), `cater.jpg`, `mezze.jpg` (annotated), `skewers-band.jpg` /
-`skewers-tall.jpg` (full-bleed band, desktop / mobile), `tasting.jpg`
-(annotated), `tasting-angle.jpg`. Kitchen shots: `chef-piping.jpg`,
-`gallery-baker.jpg`, `gallery-focaccia.jpg`, `gallery-rolls.jpg`,
-`gallery-sandwich.jpg`.
-
-**Annotated photos.** In `index.html` a `.pin` sits at `left/top` percentages
-over an image whose container keeps the image's own aspect ratio, so the
-numbers stay on the food at every size. Each pin matches a numbered line in the
-`.legend` next to it; hovering a legend line lifts its pin. The dish names are
-`g1.l*` / `g3.l*` in `i18n.js`, written from what is visible in the photos, so
-check them with the kitchen.
+Event food (the strongest material): `hero.jpg` (the shared table, with the
+gold cutlery — also the hero background), `cater.jpg` (under the "What we
+cater" intro), `chef-piping.jpg` (in "How we cater"). Everything else lives
+in the `#gallery` reel: `mezze.jpg`, `skewers-tall.jpg`, `tasting.jpg`,
+`tasting-angle.jpg`, `gallery-baker.jpg`, `gallery-sandwich.jpg`,
+`gallery-focaccia.jpg`, `gallery-rolls.jpg`.
 
 Still missing: edible gifts and a finished event table, in the same style.
+
+## The gallery reel (`#gallery`)
+
+A horizontal, swipeable filmstrip, not a static mosaic: native `scroll-snap`
+gives touch devices a real swipe for free; `script.js` adds synced dots,
+prev/next buttons, and mouse-drag for desktop trackpads. Each `<figure
+class="slide">` in `index.html` is one photo; the last slide is a CTA card
+(`.slide-cta`) instead of a photo. Captions are `g.s1.t`/`g.s1.p` through
+`g.s8.t`/`g.s8.p` in `i18n.js` — short, story-caption length, not full
+paragraphs. On mobile a slide is `80vw` wide so the next one peeks at the
+edge; on desktop, `min(62vw, 420px)`.
+
+## The header seal (`#top` → scroll)
+
+The header is transparent over the hero and solidifies once the visitor
+scrolls past it (`#top-sentinel` + an `IntersectionObserver` in `script.js`
+toggle `.is-scrolled` on `#siteHeader`). The wordmark folds away at the same
+moment, leaving just the RT mark — the recurring brand signature, echoed
+again as the slowly-turning seal (`.hero-seal`, `assets/logo-full-cream.png`)
+in the hero itself.
 
 ## Deployment
 
@@ -91,4 +104,6 @@ Pushing to `main` deploys automatically when the repo is connected to Vercel.
 - [ ] Decide where leads should land: a real inbox, or a Supabase table shown in `/admin`
 - [ ] Add `og:image` once the production domain is known (`assets/og.jpg` is ready)
 - [ ] Menu tiers section (three set menus plus a build-your-own fourth), planned
-- [ ] Confirm the inferred copy: "Calm service" commitments, "We arrive" step, six category descriptions, and the dish names under the annotated photos
+- [ ] Confirm the inferred copy: "Calm service" commitments, "We arrive" step, six category descriptions, and the gallery captions (`g.s1`–`g.s8` in `i18n.js`)
+- [ ] More photography for the reel: edible gifts, a finished event table
+- [ ] One `impeccable detect` finding is still unresolved: `tight-leading` (1.22x) on `index.html`, reported with no line/snippet. Checked computed line-heights live across desktop/mobile and both languages — nothing in the rendered DOM currently matches; flagging rather than guess-fixing.

@@ -28,6 +28,19 @@
   if (year) year.textContent = new Date().getFullYear();
 
   /* ------------------------------------------------------------------
+   * Header: transparent over the hero, solid + icon-only once scrolled past it
+   * ------------------------------------------------------------------ */
+  var header = $('#siteHeader');
+  var sentinel = $('#top-sentinel');
+  if (header && sentinel && 'IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      header.classList.toggle('is-scrolled', !entries[0].isIntersecting);
+    }, { rootMargin: '-1px 0px 0px 0px' }).observe(sentinel);
+  } else if (header) {
+    header.classList.add('is-scrolled');
+  }
+
+  /* ------------------------------------------------------------------
    * Mobile navigation
    * ------------------------------------------------------------------ */
   var toggle = $('#navToggle');
@@ -56,6 +69,71 @@
       if (occasion) occasion.value = el.getAttribute('data-occasion');
     });
   });
+
+  /* ------------------------------------------------------------------
+   * Gallery reel: scroll-snap does the swipe for free; this adds dots
+   * synced to the visible slide, prev/next buttons, and mouse-drag so
+   * the reel feels native on a trackpad too, not just a touchscreen.
+   * ------------------------------------------------------------------ */
+  var reel = $('#reel');
+  var reelDots = $('#reelDots');
+  if (reel && reelDots) {
+    var slides = $$('.slide', reel);
+
+    slides.forEach(function (_, i) {
+      var dot = document.createElement('span');
+      if (i === 0) dot.className = 'is-active';
+      reelDots.appendChild(dot);
+    });
+    var dots = $$('span', reelDots);
+
+    if ('IntersectionObserver' in window) {
+      var visibility = new Map();
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) { visibility.set(entry.target, entry.intersectionRatio); });
+        var current = slides.reduce(function (best, el) {
+          return (visibility.get(el) || 0) > (visibility.get(best) || 0) ? el : best;
+        }, slides[0]);
+        var idx = slides.indexOf(current);
+        dots.forEach(function (d, i) { d.classList.toggle('is-active', i === idx); });
+        var prevBtn = $('.reel-arrow[data-dir="-1"]');
+        var nextBtn = $('.reel-arrow[data-dir="1"]');
+        if (prevBtn) prevBtn.disabled = idx === 0;
+        if (nextBtn) nextBtn.disabled = idx === slides.length - 1;
+      }, { root: reel, threshold: [0, .25, .5, .75, 1] });
+      slides.forEach(function (s) { io.observe(s); });
+    }
+
+    $$('.reel-arrow').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var dir = parseInt(btn.getAttribute('data-dir'), 10);
+        var step = slides[0].getBoundingClientRect().width + 16;
+        reel.scrollBy({ left: dir * step, behavior: 'smooth' });
+      });
+    });
+
+    // Mouse-drag on desktop; touch devices already get native swipe.
+    var dragging = false, startX = 0, startScroll = 0, moved = false;
+    reel.addEventListener('pointerdown', function (e) {
+      if (e.pointerType === 'touch') return;
+      dragging = true; moved = false;
+      startX = e.clientX; startScroll = reel.scrollLeft;
+      reel.classList.add('is-dragging');
+    });
+    window.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      var dx = e.clientX - startX;
+      if (Math.abs(dx) > 4) moved = true;
+      reel.scrollLeft = startScroll - dx;
+    });
+    window.addEventListener('pointerup', function () {
+      if (!dragging) return;
+      dragging = false;
+      reel.classList.remove('is-dragging');
+    });
+    // A drag that actually moved the reel shouldn't also fire the slide's link.
+    reel.addEventListener('click', function (e) { if (moved) { e.preventDefault(); moved = false; } }, true);
+  }
 
   /* ------------------------------------------------------------------
    * Social proof
