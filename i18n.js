@@ -18,6 +18,8 @@
       'nav.visit': 'We come to you',
       'nav.calm': 'Calm service',
       'nav.gallery': 'Gallery',
+      'nav.faq': 'FAQ',
+      'fab.wa': 'Chat with us on WhatsApp',
       'nav.cta': 'Request a quote',
       'nav.open': 'Open menu',
       'nav.close': 'Close menu',
@@ -102,6 +104,23 @@
       'alt.g2': 'A steel tray of rolled ham skewers with mint, pomegranate seeds and lemon zest',
       'alt.g3a': 'Overhead view of a tasting plate with two soups in glasses, a savoury tart and a beef tartare',
       'alt.g3b': 'The same tasting plate in low sun, with more plates lined up behind',
+      'faq.title': 'Questions people ask',
+      'faq.q1': 'How far in advance do I need to book?',
+      'faq.a1': 'At least 48 hours before the event. For larger productions we may need 72 — we\u2019ll tell you which one applies when we send the offer.',
+      'faq.q2': 'Do I need to pay a deposit?',
+      'faq.a2': 'Yes — a deposit at confirmation, with the balance due at the event.',
+      'faq.q3': 'What if I need to change the date, or cancel?',
+      'faq.a3': 'Talk to us directly. We\u2019re flexible with date changes when you give us reasonable notice.',
+      'faq.q4': 'Can you work around allergies or dietary restrictions?',
+      'faq.a4': 'Yes — tell us about any allergy or restriction when you book, and we adjust the menu around it.',
+      'faq.q5': 'Is there a minimum or maximum number of guests?',
+      'faq.a5': 'No fixed limit. Tell us the headcount and we\u2019ll confirm we can cover it, then build the offer around it.',
+      'faq.q6': 'Do you only work in Bucharest?',
+      'faq.a6': 'Mainly Bucharest, plus the surrounding area for an extra travel cost depending on distance.',
+      'faq.q7': 'Do you cook at my venue, or do I collect the food?',
+      'faq.a7': 'Both, depending on what you book. For a private chef, we set up and cook live at your venue. Platters can also be collected from Popa Savu 56, or delivered by Glovo when the quantity allows.',
+      'faq.q8': 'Can I get something completely custom, not from the set menu?',
+      'faq.a8': 'Yes. The set menu is there for a quick answer, but anything else is just as possible — we build it around your brief and your budget.',
       'proof.title': 'What clients say',
 
       'start.title': 'Tell us what you are planning.',
@@ -140,6 +159,11 @@
       'status.opening': 'Opening WhatsApp…',
       'status.sent': 'Thank you. We will be in touch.',
       'status.error': 'Something went wrong. Please call us on 0720 786 883.',
+      'confirm.title': 'Request sent.',
+      'confirm.body': 'Thank you — we will be in touch.',
+      'confirm.waNote': 'If WhatsApp did not open on its own,',
+      'confirm.waLink': 'send it directly.',
+      'confirm.reset': 'Send another request',
       'wa.hello': 'Hello Rotar Atelier, I would like a quote.',
 
       'footer.tag': 'Private chef catering in Bucharest',
@@ -159,6 +183,8 @@
       'nav.visit': 'Venim la tine',
       'nav.calm': 'Fără griji',
       'nav.gallery': 'Galerie',
+      'nav.faq': 'Întrebări',
+      'fab.wa': 'Scrie-ne pe WhatsApp',
       'nav.cta': 'Cere o ofertă',
       'nav.open': 'Deschide meniul',
       'nav.close': 'Închide meniul',
@@ -243,6 +269,23 @@
       'alt.g2': 'O tavă de inox cu frigărui de șuncă rulată, cu mentă, semințe de rodie și coajă de lămâie',
       'alt.g3a': 'Vedere de sus a unei farfurii de degustare, cu două supe în pahare, o tartă sărată și un tartar de vită',
       'alt.g3b': 'Aceeași farfurie de degustare, în lumina joasă a soarelui, cu alte farfurii aliniate în spate',
+      'faq.title': 'Întrebări frecvente',
+      'faq.q1': 'Cu cât timp înainte trebuie să rezerv?',
+      'faq.a1': 'Cu minimum 48 de ore înainte de eveniment. Pentru producții mai mari poate fi nevoie de 72 — îți spunem exact care se aplică atunci când trimitem oferta.',
+      'faq.q2': 'Trebuie să plătesc avans?',
+      'faq.a2': 'Da — un avans la confirmarea comenzii, iar restul se plătește la eveniment.',
+      'faq.q3': 'Ce se întâmplă dacă vreau să schimb data sau să anulez?',
+      'faq.a3': 'Vorbește direct cu noi. Suntem flexibili la schimbări de dată, cu cât mai mult preaviz posibil.',
+      'faq.q4': 'Puteți ține cont de alergii sau restricții alimentare?',
+      'faq.a4': 'Da — spune-ne din timp despre orice alergie sau restricție, și ajustăm meniul în funcție de asta.',
+      'faq.q5': 'Există un minim sau un maxim de persoane?',
+      'faq.a5': 'Fără o limită fixă. Ne spui numărul de persoane, confirmăm că putem acoperi comanda și construim oferta în jurul lui.',
+      'faq.q6': 'Lucrați doar în București?',
+      'faq.a6': 'În principal București, plus zonele din apropiere, cu un cost suplimentar de deplasare în funcție de distanță.',
+      'faq.q7': 'Gătiți la locația mea, sau ridic eu comanda?',
+      'faq.a7': 'Ambele, în funcție de ce alegi. Pentru chef privat, ne instalăm și gătim live la locația ta. Platourile se pot ridica și de la Popa Savu 56, sau se livrează prin Glovo, când cantitatea permite.',
+      'faq.q8': 'Pot cere ceva complet personalizat, în afara meniului fix?',
+      'faq.a8': 'Da. Meniul fix există pentru un răspuns rapid, dar orice altceva rămâne la fel de posibil — îl construim în jurul brief-ului și al bugetului tău.',
       'proof.title': 'Ce spun clienții',
 
       'start.title': 'Spune-ne ce plănuiești.',
@@ -281,6 +324,11 @@
       'status.opening': 'Se deschide WhatsApp…',
       'status.sent': 'Mulțumim. Te contactăm în curând.',
       'status.error': 'Ceva nu a mers. Sună-ne la 0720 786 883.',
+      'confirm.title': 'Cerere trimisă.',
+      'confirm.body': 'Mulțumim — revenim cu un răspuns.',
+      'confirm.waNote': 'Dacă WhatsApp nu s-a deschis singur,',
+      'confirm.waLink': 'trimite-o direct.',
+      'confirm.reset': 'Trimite altă cerere',
       'wa.hello': 'Bună ziua, aș dori o ofertă de la Rotar Atelier.',
 
       'footer.tag': 'Catering cu chef privat în București',
@@ -346,6 +394,18 @@
     apply(lang);
   }
 
+  // Browser-language guess, used only when the visitor has never picked a
+  // language explicitly. Never persisted — setLang() is the only path that
+  // writes to storage, so this keeps re-guessing on every visit until the
+  // person actually clicks a flag.
+  function detectLang() {
+    var candidates = (navigator.languages && navigator.languages.length) ? navigator.languages : [navigator.language || ''];
+    for (var i = 0; i < candidates.length; i++) {
+      if (/^ro\b/i.test(candidates[i])) return 'ro';
+    }
+    return DEFAULT_LANG;
+  }
+
   window.RotarI18n = {
     t: t,
     get: function () { return document.documentElement.lang || DEFAULT_LANG; },
@@ -358,6 +418,6 @@
       b.addEventListener('click', function () { setLang(b.getAttribute('data-lang')); });
     });
     var saved = safeGet();
-    apply(STRINGS[saved] ? saved : DEFAULT_LANG);
+    apply(STRINGS[saved] ? saved : detectLang());
   });
 })();

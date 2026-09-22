@@ -41,6 +41,28 @@
   }
 
   /* ------------------------------------------------------------------
+   * Scroll progress: a direct read of scroll position, throttled to one
+   * update per animation frame so it never fights the browser's own paint.
+   * ------------------------------------------------------------------ */
+  var progressBar = $('#scrollProgress');
+  if (progressBar) {
+    var progressTicking = false;
+    function paintProgress() {
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+      progressBar.style.transform = 'scaleX(' + ratio + ')';
+      progressTicking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (progressTicking) return;
+      progressTicking = true;
+      requestAnimationFrame(paintProgress);
+    }, { passive: true });
+    window.addEventListener('resize', paintProgress);
+    paintProgress();
+  }
+
+  /* ------------------------------------------------------------------
    * Mobile navigation
    * ------------------------------------------------------------------ */
   var toggle = $('#navToggle');
@@ -67,8 +89,36 @@
   $$('[data-occasion]').forEach(function (el) {
     el.addEventListener('click', function () {
       if (occasion) occasion.value = el.getAttribute('data-occasion');
+      suggestFormat(el.getAttribute('data-occasion'));
     });
   });
+
+  /* ------------------------------------------------------------------
+   * Smart form: picking an occasion suggests a sensible format, but only
+   * while the visitor hasn't touched that field themselves — a suggestion,
+   * never an override of an actual choice.
+   * ------------------------------------------------------------------ */
+  var formatField = $('#f-format');
+  var formatTouched = false;
+  var OCCASION_FORMAT = {
+    'corporate-lunches': 'set',
+    'company-meetings': 'set',
+    'private-events': 'bespoke',
+    'cakes-gifts': 'bespoke',
+    'dessert-bars': 'bespoke',
+    'launches-shoots': 'live'
+  };
+  function suggestFormat(occasionValue) {
+    if (!formatField || formatTouched) return;
+    var suggested = OCCASION_FORMAT[occasionValue];
+    if (suggested) formatField.value = suggested;
+  }
+  if (formatField) {
+    formatField.addEventListener('change', function () { formatTouched = true; });
+    if (occasion) {
+      occasion.addEventListener('change', function () { suggestFormat(occasion.value); });
+    }
+  }
 
   /* ------------------------------------------------------------------
    * Gallery reel: scroll-snap does the swipe for free; this adds dots
@@ -169,6 +219,26 @@
   var form = $('#offerForm');
   var status = $('#formStatus');
   var dateInput = $('#f-date');
+  var formConfirm = $('#formConfirm');
+  var confirmWaLink = $('#confirmWaLink');
+  var formResetBtn = $('#formReset');
+
+  function showConfirm(waUrl) {
+    if (!formConfirm) return;
+    if (confirmWaLink && waUrl) confirmWaLink.href = waUrl;
+    $('#formFields').hidden = true;
+    formConfirm.hidden = false;
+    formConfirm.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+  if (formResetBtn) {
+    formResetBtn.addEventListener('click', function () {
+      form.reset();
+      formatTouched = false;
+      formConfirm.hidden = true;
+      $('#formFields').hidden = false;
+      setStatus('', false);
+    });
+  }
 
   if (dateInput) dateInput.min = new Date().toISOString().slice(0, 10);
 
@@ -249,6 +319,8 @@
     var lang = window.RotarI18n.get();
     var data = collect(lang);
 
+    var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(buildMessage(data));
+
     if (FORM_ENDPOINT) {
       fetch(FORM_ENDPOINT, {
         method: 'POST',
@@ -256,17 +328,15 @@
         body: JSON.stringify(Object.assign({ language: lang }, data))
       }).then(function (res) {
         if (!res.ok) throw new Error('bad status');
-        form.reset();
-        setStatus(t('status.sent'), false);
+        showConfirm(url);
       }).catch(function () {
         setStatus(t('status.error'), true);
       });
       return;
     }
 
-    setStatus(t('status.opening'), false);
-    var url = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(buildMessage(data));
     window.open(url, '_blank', 'noopener');
+    showConfirm(url);
   });
 
   $$('input', form).forEach(function (el) {

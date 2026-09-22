@@ -14,6 +14,7 @@ Page order follows the client's questions:
 | We come to you | `#visit` | How does it work? |
 | Calm service | `#calm` | Who takes care of it? |
 | Gallery + social proof | `#gallery` | Is it any good? |
+| FAQ | `#faq` | What are the practical rules? |
 | Lead form | `#start` | How do I start? |
 
 ## Structure
@@ -22,10 +23,13 @@ Page order follows the client's questions:
 index.html      Page markup (English text ships in the HTML)
 styles.css      All styling; tokens at the top
 i18n.js         Every string, EN and RO, plus the language switcher
-script.js       Header, mobile menu, occasion prefill, testimonials, lead form
-assets/         Photos, logo marks, favicons
+script.js       Header, mobile menu, smart form, lead form, gallery, scroll progress
+assets/         Photos + WebP siblings, logo marks, favicons, PWA icons
 admin/          Private logo archive (Supabase), self-contained, see admin/SETUP.md
 PRODUCT.md      Audience, tone, anti-references, principles
+robots.txt      Crawler rules (blocks /admin/); sitemap line commented out until the real domain is set
+sitemap.xml     Single-URL sitemap (client-side language switch, no separate paths)
+manifest.json   PWA manifest (installable "add to home screen")
 ```
 
 ## Running locally
@@ -93,6 +97,68 @@ moment, leaving just the RT mark — the recurring brand signature, echoed
 again as the slowly-turning seal (`.hero-seal`, `assets/logo-full-cream.png`)
 in the hero itself.
 
+## FAQ (`#faq`)
+
+Native `<details>/<summary>` accordion, no JS required for the open/close
+behavior (a chevron rotates via a CSS `::after` on `[open]`). The eight
+questions and answers live in `i18n.js` (`faq.q1`–`faq.q8` / `faq.a1`–`faq.a8`)
+and are grounded in facts the client confirmed directly — deposit, rescheduling,
+allergies, and coverage area — not invented. The same eight pairs are mirrored
+in the `FAQPage` JSON-LD block in `<head>` (English only, per schema.org
+convention) so they can also surface as a Google FAQ rich result.
+
+## Lead form confirmation (`#start`)
+
+Submitting swaps `#formFields` for `#formConfirm` instead of a small inline
+status line — a full panel with a checkmark, a restated next step, and (since
+the primary path opens WhatsApp in a new tab, which some browsers block) a
+visible fallback link to the exact same pre-filled WhatsApp message, plus a
+"send another request" reset. Wired in `script.js`'s `showConfirm()`.
+
+**Smart format suggestion.** Picking an occasion (`#occasion`) pre-fills the
+format field (`#f-format`) with a sensible guess — set menu for corporate
+lunches/meetings, bespoke for private events/cakes/dessert bars, live-chef for
+launches/shoots (`OCCASION_FORMAT` map in `script.js`). It only fires until the
+visitor touches the format field themselves (`formatTouched`), so it never
+overwrites a deliberate choice.
+
+## WhatsApp floating button
+
+Site-wide `.wa-fab` (bottom-right, above the sticky mobile CTA bar) links
+straight to `wa.me/40720786883` with a one-time pulse ring on load. Same
+number as the lead form's WhatsApp fallback and the "Call us" block.
+
+## Automatic language detection (`i18n.js`)
+
+On first visit (no saved preference), the page reads `navigator.languages` /
+`navigator.language` and shows Romanian if any of them start with `ro`,
+otherwise English — but never writes that guess to `localStorage`. Only an
+explicit click on a flag persists a choice (`setLang` → `safeSet`), so a
+Romanian visitor whose browser is set to English (or vice versa) still gets a
+fresh guess on their next visit instead of getting stuck on a first-run guess.
+
+## Performance and technical SEO
+
+- Every content photo ships as `<picture><source type="image/webp">` with the
+  original JPEG as fallback (~38% smaller on average); `assets/*.webp` are
+  hand-generated siblings, not a build step.
+- `robots.txt`, `sitemap.xml`, `manifest.json` are all in place. The sitemap
+  and the two JSON-LD blocks in `<head>` use a placeholder,
+  `REPLACE-WITH-REAL-DOMAIN` — **search for it and replace it with the real
+  production domain before launch**, then uncomment the `Sitemap:` line in
+  `robots.txt`.
+- Two `<script type="application/ld+json">` blocks: `LocalBusiness` +
+  `FoodEstablishment` (name, address, phone, service area, `sameAs` linking to
+  holybakery.ro) and `FAQPage` (mirrors `#faq`).
+
+## Visual craft
+
+Gold `::selection` highlight, a gold-on-black themed scrollbar
+(`scrollbar-color` + the WebKit pseudo-elements), and a thin gold
+scroll-progress bar fixed at the very top of the viewport
+(`.scroll-progress`, filled by a `requestAnimationFrame`-throttled listener in
+`script.js`).
+
 ## Deployment
 
 Static output, deployable to Vercel or any static host. No build command.
@@ -100,10 +166,15 @@ Pushing to `main` deploys automatically when the repo is connected to Vercel.
 
 ## Open items
 
+- [ ] **Replace `REPLACE-WITH-REAL-DOMAIN`** in `sitemap.xml` and the two JSON-LD blocks in `index.html` once the production domain is live, then uncomment the `Sitemap:` line in `robots.txt`
 - [ ] Real testimonials (see above)
 - [ ] Decide where leads should land: a real inbox, or a Supabase table shown in `/admin`
-- [ ] Add `og:image` once the production domain is known (`assets/og.jpg` is ready)
-- [ ] Menu tiers section (three set menus plus a build-your-own fourth), planned
+- [ ] Menu tiers section (three set menus plus a build-your-own fourth), planned but not built
+- [ ] Analytics (e.g. Plausible), not yet added
+- [ ] Chef bio/photo, Instagram link, Google Reviews widget — discussed, not yet approved
 - [ ] Confirm the inferred copy: "Calm service" commitments, "We arrive" step, six category descriptions, and the gallery captions (`g.s1`–`g.s8` in `i18n.js`)
 - [ ] More photography for the reel: edible gifts, a finished event table
-- [ ] One `impeccable detect` finding is still unresolved: `tight-leading` (1.22x) on `index.html`, reported with no line/snippet. Checked computed line-heights live across desktop/mobile and both languages — nothing in the rendered DOM currently matches; flagging rather than guess-fixing.
+
+`tight-leading` (the one previously-unresolved `impeccable detect` finding) was
+confirmed a false positive by the client and is now suppressed via
+`.impeccable/config.json` — see that file for the reasoning trail.

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  TODO: replace REPLACE-WITH-REAL-DOMAIN below with the real production
+  domain once it's live. The site is one URL serving both languages via
+  a client-side switch (no separate /en or /ro paths), so a single entry
+  is correct here — no hreflang alternates needed.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://REPLACE-WITH-REAL-DOMAIN/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>

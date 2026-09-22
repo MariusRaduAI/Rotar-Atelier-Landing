@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+
+# TODO: replace with the real production domain once it's live, then
+# uncomment. Left out until then so nothing points search engines at a
+# wrong or temporary URL.
+# Sitemap: https://REPLACE-WITH-REAL-DOMAIN/sitemap.xml
